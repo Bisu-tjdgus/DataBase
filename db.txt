@@ -1,0 +1,53 @@
+
+select gender, count(gender) from employees group by gender
+
+
+
+
+
+revoke all on *.* from 'sample'@'localhost';
+
+grant select, insert, update on sample.* to 'sample'@'localhost';
+
+
+
+create user 'sample'@'localhost' identified by 'test';
+
+
+
+
+CREATE TABLE Persons_new6 (
+    Personid int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (Personid)
+);
+
+CREATE TABLE Persons_new5 (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255) DEFAULT 'Sandnes'
+);
+
+
+CREATE TABLE Persons_new4 (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age>=18)
+);
+
+
+
+
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (PersonID) REFERENCES Persons_new3(ID)
+);
